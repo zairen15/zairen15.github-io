@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --color1: #f8e8b5;
+            --color2: #eac6a1;
+            --color3: #d8a199;
+            --color4: #c7868f;
+            --color5: #b45d80;
+            --color6: #9f3f76;
+            --color7: #803764;
+            --color8: #5b254d;
+            --color9: #3f163a;
+            --color10: #24152c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--color10);
+            color: var(--color1);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--color7), var(--color8));
+            padding: 2rem;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--color1);
+        }
+
+        nav {
+            background: var(--color9);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color3);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color1);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            min-height: 50vh;
+            animation: fadeUp 1s ease-in;
+        }
+
+        .section-alt {
+            background: var(--color8);
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1 1 55%;
+        }
+
+        .about-photo {
+            flex: 1 1 40%;
+            text-align: center;
+        }
+
+        .about-photo img {
+            max-width: 70%;
+            border-radius: 1rem;
+            border: var(--color5);
+            box-shadow: 0 0 15px rgba(50, 1, 27, 0.3);
+            animation: fadeIn 2s ease;
+        }
+
+        .h2 {
+            color: #ffd2ee;
+        }
+
+        .diamond-skills {
+            text-align: center;
+        }
+
+        .diamonds {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .diamond {
+            width: 120px;
+            height: 120px;
+            background: var(--color7);
+            transform: rotate(45deg);
+            position: relative;
+            transition: transform 0.5s ease, background 0.3s;
+            animation: popIn 0.8s ease forwards;
+        }
+
+        .diamond:hover {
+            background: var(--color5);
+            transform: rotate(45deg) scale(1.1);
+        }
+
+        .diamond .content {
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            color: var(--color1);
+        }
+
+        .diamond .content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .diamond .content p {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(45deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(45deg);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input,
+        textarea {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--color6);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: var(--color4);
+        }
+
+        footer {
+            background: var(--color9);
+            padding: 1rem;
+            text-align: center;
+            color: var(--color4);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .projects {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            margin: 0;
+            padding: 0;
+            font-family: "Martel Sans", sans-serif;
+        }
+
+        .projects h1 {
+            font-size: 5.25vmin;
+            text-align: right;
+            margin-right: 25px;
+            color: rgb(255, 209, 240);
+            font-size: 25px;
+        }
+
+        .projects p {
+            font-size: max(10pt, 2.5vmin);
+            line-height: 1.4;
+            color: #380e39;
+            margin-bottom: 1.5rem;
+        }
+
+        .wrap {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 85vmin;
+            height: 65vmin;
+            margin: 2rem auto;
+            border: 3px solid;
+            transition: 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding: 1rem 0.75rem;
+            background: #440f4b;
+            transition: 0.4s ease-in-out;
+            z-index: 1;
+        }
+
+        .overlay-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 15vmin;
+            height: 100%;
+            padding: 0.5rem 0 0 0.5rem;
+            border: 3px solid;
+            border-image: linear-gradient(
+                to bottom,
+                #ffd7f4 5%,
+                rgb(144, 31, 144) 35% 65%,
+                #c645b9 95%
+            ) 0 0 0 100%;
+            transition: 0.3s ease-in-out 0.2s;
+            z-index: 1;
+        }
+
+        .image-content1 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60vmin;
+            height: 100%;
+            background-image: url("p1.png");
+            background-size: cover;
+            transition: 0.3s ease-in-out;
+        }
+
+        .image-content2 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60vmin;
+            height: 100%;
+            background-image: url("p2.png");
+            background-size: cover;
+            transition: 0.3s ease-in-out;
+        }
+
+        .image-content3 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60vmin;
+            height: 100%;
+            background-image: url("p3.png");
+            background-size: cover;
+            transition: 0.3s ease-in-out;
+        }
+
+        .image-content4 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60vmin;
+            height: 100%;
+            background-image: url("p4.png");
+            background-size: cover;
+            transition: 0.3s ease-in-out;
+        }
+
+        .inset {
+            max-width: 50%;
+            margin: 0.25em 1em 1em 0;
+            border-radius: 0.25em;
+            float: left;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 55px;
+            height: 4vmin;
+            transition: 0.3s ease-in-out 0.3s;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            background: rgb(153, 83, 173);
+            border: 1px solid indigo;
+            border-radius: 50%;
+            transition: 0.3s ease-in-out 0.3s;
+        }
+
+        .text {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60vmin;
+            height: 100%;
+            padding: 3vmin 4vmin;
+            background: #f7dbf7;
+            box-shadow: inset 1px 1px 15px 0 rgba(0 0 0 / 0.4);
+            overflow-y: scroll;
+        }
+
+        .wrap:hover .overlay {
+            transform: translateX(-60vmin);
+        }
+
+        .wrap:hover .image-content {
+            width: 30vmin;
+        }
+
+        .wrap:hover .overlay-content {
+            border: none;
+            transition-delay: 0.2s;
+            transform: translateX(60vmin);
+        }
+
+        .wrap:hover .dots {
+            transform: translateX(1rem);
+        }
+
+        .wrap:hover .dots .dot {
+            background: white;
+        }
+
+        .animate {
+            animation-duration: 0.7s;
+            animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+            animation-fill-mode: backwards;
+        }
+
+        .pop {
+            animation-name: pop;
+        }
+
+        @keyframes pop {
+            0% {
+                opacity: 0;
+                transform: scale(0.5, 0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1, 1);
+            }
+        }
+
+        .slide {
+            animation-name: slide;
+        }
+
+        @keyframes slide {
+            0% {
+                opacity: 0;
+                transform: translate(4em, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        .slide-left {
+            animation-name: slide-left;
+        }
+
+        @keyframes slide-left {
+            0% {
+                opacity: 0;
+                transform: translate(-40px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        .slide-up {
+            animation-name: slide-up;
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(3em);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.9s;
+        }
+
+        .delay-4 {
+            animation-delay: 1.2s;
+        }
+
+        .delay-5 {
+            animation-delay: 1.5s;
+        }
+
+        .delay-6 {
+            animation-delay: 1.8s;
+        }
+
+        .delay-7 {
+            animation-delay: 2.1s;
+        }
+
+        .delay-8 {
+            animation-delay: 2.4s;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (min-width: 1200px) {
+            .project-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .grid-wrapper > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-wrapper > div > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 200px;
+            grid-auto-flow: dense;
+        }
+
+        .grid-wrapper .wide {
+            grid-column: span 2;
+        }
+
+        .grid-wrapper .tall {
+            grid-row: span 2;
+        }
+
+        .grid-wrapper .big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .grapics {
+            background-color: #c8b2e1;
+        }
+
+        .grapics h2 {
+            color: #24152c;
+        }
+
+        .view-more-button {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--color6);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .view-more-button:hover {
+            background: var(--color4);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .grid-wrapper {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .view-more-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Harith Malan</h1>
+        <p>Graphic Designer • Developer • Audio Technician</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#graphic">Graphics</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 class="h2">About Me</h2><br>
+                <p>
+                    Hi, I'm Harith Malan, creative technologist with a passion for blending <strong>design, development, and audio
+                    Technician</strong> into meaningful experiences. Currently pursuing a <strong>Higher Diploma in
+                    Computer Science</strong> at <strong>SLIIT CITY UNI Campus</strong> (affiliated with the
+                    <strong>University of Bedfordshire, UK</strong>), I’m in my second year and thriving at the intersection
+                    of <strong>technology and creativity</strong>.<br><br>
+    
+                    With <strong>7+ years in graphic design</strong>, I’ve collaborated with diverse clients to produce
+                    striking visuals and presently serve as the <strong>Graphic Designer on the Top Board</strong> of the
+                    Student Interactive Society.<br><br>
+    
+                    Beyond design, I’m an experienced <strong>Audio Technician</strong>—managing live sound systems, mixers,
+                    and event production. I led the <strong>Technical Section</strong> of my school’s media unit as
+                    President, where I developed strong leadership and team coordination skills.<br><br>
+    
+                    My tech journey began early with certifications in <strong>ICT and English</strong>, backed by a solid
+                    academic foundation and a deep curiosity for all things digital. I bring a mix of <strong>creativity,
+                        technical know-how, and team spirit</strong> to every project I take on.<br><br>
+    
+                    <h2>Let’s build, design, and innovate together. 🚀</h2>
+                </p>
+            </div>
+            <div class="about-photo">
+                <img src="my.jpg" alt="My Photo" />
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="diamond-skills section-alt">
+        <h2>Skills</h2><br>
+        <div class="diamonds">
+            <div class="diamond">
+                <div class="content">
+                    <h3>95%</h3>
+                    <p>Graphic Design</p>
+                </div>
+            </div>
+            <div class="diamond">
+                <div class="content">
+                    <h3>60%</h3>
+                    <p>Software Development</p>
+                </div>
+            </div>
+            <div class="diamond">
+                <div class="content">
+                    <h3>85%</h3>
+                    <p>Web Development</p>
+                </div>
+            </div>
+            <div class="diamond">
+                <div class="content">
+                    <h3>80%</h3>
+                    <p>OOP</p>
+                </div>
+            </div>
+            <div class="diamond">
+                <div class="content">
+                    <h3>95%</h3>
+                    <p>Microsoft Office</p>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+
+    <section class="projects" id="projects">
+        <h2>Web Designs</h2>
+        <div class="project-grid">
+            <div class="wrap animate pop1">
+                <div class="overlay">
+                    <div class="overlay-content animate slide-left delay-2">
+                        <h1 class="animate slide-left pop delay-4">EduLog</h1>
+                        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Student Management System
+                        </p>
+                    </div>
+                    <div class="image-content1 animate slide delay-5"></div>
+                    <div class="dots animate">
+                        <div class="dot animate slide-up delay-6"></div>
+                        <div class="dot animate slide-up delay-7"></div>
+                        <div class="dot animate slide-up delay-8"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p><img class="inset" src="p1.png" alt="Students Records Management System" />EduLog is a student records management system designed to streamline the way educational institutions manage student
+                    data. The system allows administrators and educators to store, access, and manage student records efficiently in a
+                    centralized digital platform.<br><br>
+                    
+                    Key features include:<br>
+                    
+                    ---Student profile management (personal info, academic history, etc.)<br>
+                    
+                    ---Course and grade tracking<br>
+                    
+                    ---Attendance recording<br>
+                    
+                    ---Secure login system for different user roles (e.g., admin, teachers, students)<br>
+                    
+                    ---Easy search and filter functionalities for quick data access<br><br>
+                    
+                    EduLog was developed to improve data accuracy, reduce paperwork, and enhance the overall administrative workflow. This
+                    project allowed me to explore data structuring, form validation, and user access control, giving me solid experience in
+                    building robust management systems.</p>
+                </div>
+            </div><br>
+
+            <div class="wrap animate pop2">
+                <div class="overlay">
+                    <div class="overlay-content animate slide-left delay-2">
+                        <h1 class="animate slide-left pop delay-4">VIBES</h1>
+                        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Online Clothing Store
+                        </p>
+                    </div>
+                    <div class="image-content2 animate slide delay-5"></div>
+                    <div class="dots animate">
+                        <div class="dot animate slide-up delay-6"></div>
+                        <div class="dot animate slide-up delay-7"></div>
+                        <div class="dot animate slide-up delay-8"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p><img class="inset" src="p2.png" alt="" />Vibes is an online clothing store developed as a full-stack web application. The project showcases a modern and
+                    responsive e-commerce platform where users can browse clothing items, add them to a cart, and place orders seamlessly.<br><br>
+                    
+                    🛠 Technologies Used:<br>
+                    ---HTML & CSS for structure and styling<br>
+                    
+                    ---Bootstrap for responsive, mobile-friendly design<br>
+                    
+                    ---Node.js for back-end development and server-side logic<br>
+                    
+                    ---SQL for database management and storing product/order data<br><br>
+                    
+                    🔑 Key Features:<br>
+                    ---Product catalog with category filtering<br>
+                    
+                    ---Interactive shopping cart system<br>
+                    
+                    ---User authentication (login/register)<br>
+                    
+                    ---Order processing and confirmation<br>
+                    
+                    ---Admin panel for product management (optional if you added one)<br><br>
+                    
+                    Vibes helped me dive deeper into full-stack development, combining front-end visuals with powerful server-side
+                    functionality and database integration to simulate a real online shopping experience.</p>
+                </div>
+            </div><br>
+
+            <div class="wrap animate pop3">
+                <div class="overlay">
+                    <div class="overlay-content animate slide-left delay-2">
+                        <h3 class="animate slide-left pop delay-4">GiftHeaven</h3>
+                        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Online Gift Store
+                        </p>
+                    </div>
+                    <div class="image-content3 animate slide delay-5"></div>
+                    <div class="dots animate">
+                        <div class="dot animate slide-up delay-6"></div>
+                        <div class="dot animate slide-up delay-7"></div>
+                        <div class="dot animate slide-up delay-8"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p><img class="inset" src="p3.png" alt="" />Gift Heaven is one of my major projects and marks my first full implementation using HTML, CSS, and JavaScript. It’s a
+                    fully functional online gift store that features both front-end and back-end development. Users can browse a variety of
+                    gift items, place orders, and have them delivered to specific addresses they provide during checkout.<br><br>
+                    
+                    The project includes essential e-commerce functionalities such as:<br>
+                    
+                    ---A dynamic shopping cart<br>
+                    
+                    ---A secure login and registration system<br>
+                    
+                    ---A contact form for customer support<br>
+                    
+                    ---Order management and delivery coordination features<br><br>
+                    
+                    Gift Heaven gave me hands-on experience in building a real-world web application, integrating design with functionality,
+                    and handling user interaction from start to finish.</p>
+                </div>
+            </div><br>
+
+            <div class="wrap animate pop4">
+                <div class="overlay">
+                    <div class="overlay-content animate slide-left delay-2">
+                        <h3 class="animate slide-left pop delay-4">PizzaPalace</h3>
+                        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Online Pizza Store
+                        </p>
+                    </div>
+                    <div class="image-content4 animate slide delay-5"></div>
+                    <div class="dots animate">
+                        <div class="dot animate slide-up delay-6"></div>
+                        <div class="dot animate slide-up delay-7"></div>
+                        <div class="dot animate slide-up delay-8"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p><img class="inset" src="p4.png" alt="" />Pizza Place is one of my academic projects developed as part of my coursework. It is a fully functional online pizza
+                    ordering system that allows users to browse a menu, customize their orders, and place online orders for delivery or
+                    pickup.<br><br>
+                    
+                    The system features:<br>
+                    
+                    ---An interactive menu interface showcasing various pizza options<br>
+                    
+                    ---Order customization (size, toppings, quantity, etc.)<br>
+                    
+                    ---A shopping cart system for managing selected items<br>
+                    
+                    ---Basic user authentication and order confirmation<br><br>
+                    
+                    This project helped me strengthen my understanding of building user-friendly interfaces and managing online food
+                    ordering workflows. It was a great opportunity to apply what I’ve learned in a practical, real-world scenario.</p>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+
+    <section id="graphic" class="grapics">
+        <h2><center>Graphic Designs</center></h2><br><br>
+        <div class="grid-wrapper">
+            <div>
+                <img src="4.jpg">
+            </div>
+            <div>
+                <img src="2.jpg">
+            </div>
+            <div class="tall">
+                <img src="1.jpg">
+            </div>
+            <div class="wide">
+                <img src="11.jpg" />
+            </div>
+            <div>
+                <img src="5.jpg" />
+            </div>
+            <div class="tall">
+                <img src="3.png" />
+            </div>
+            <div class="big">
+                <img src="9.jpg" />
+            </div>
+            <div>
+                <img src="12.jpg" />
+            </div>
+            <div class="wide">
+                <img src="15.jpg" />
+            </div>
+            <div class="big">
+                <img src="13.png" />
+            </div>
+            <div class="tall">
+                <img src="17.jpg" />
+            </div>
+            <div>
+                <img src="20.png" />
+            </div>
+            <div>
+                <img src="18.jpg" />
+            </div>
+            <div>
+                <img src="19.png" />
+            </div>
+        </div>
+        <a href="https://drive.google.com/drive/folders/1J9R3C0sTq23MvT7x_tzvBZE54FO7uosl?usp=drive_link" class="view-more-button">View More Designs</a>
+    </section>
+
+    <section id="contact" class="section-alt">
+        <h2>Contact</h2>
+        <p>Fill out the form below to send me a message:</p>
+        <form action="https://formsubmit.co/malanharith@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        © 2025 HarithMalan. All rights reserved.
+    </footer>
+</body>
+
+</html>
